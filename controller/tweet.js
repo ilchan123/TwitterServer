@@ -17,24 +17,16 @@ export async function getIdTweets(req,res,next){
 // 트윗을 생성하는 함수
 export async function postTweets(req,res,next){
     const {username, name, text} = req.body
-    const tweet = {
-        id: '4',
-        username: username,
-        name: name,
-        text: text,
-        createdAt: Date.now().toString()
-    }
-    let tweets = await tweetRepository.getAll()  
-    tweets = [tweet, ...tweets]
-    res.status(200).json(tweets)
+    const tweet = await tweetRepository.create(username, name, text)  
+    res.status(201).json(tweet)
 }
 
 // 트윗 수정하기
 export async function putIdTweets(req,res,next){
     const id = req.params.id 
-    const tweet = await tweetRepository.getAllById(id)
+    const text = req.body.text
+    const tweet = await tweetRepository.getAllById(id, text)
     if(tweet){
-        tweet.text = req.body.text
         res.status(201).json(tweet)
     }else{
         res.status(404).json({message: `${id}의 트윗 없다`})
