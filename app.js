@@ -1,7 +1,7 @@
 import express from 'express'
 import tweetsRouter from './router/tweets.js'
 import authRouter from './router/auth.js'
-
+ 
 const app = express()
 
 app.use(express.json())

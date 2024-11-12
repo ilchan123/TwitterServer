@@ -81,7 +81,7 @@ router.put('/:id', (req, res, next)=>{
     if(tweet){
         tweet.text = text
         res.status(201).json(tweet)
-    }else{
+    }else{ 
         res.status(404).json({message: `${id}의 트윗이 없습니다`})
     }    
 })
