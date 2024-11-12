@@ -93,7 +93,7 @@ router.delete('/:id', (req, res, next)=>{
     const id = req.params.id
     tweets = tweets.filter((tweet)=> tweet.id !== id)
     const tweet = tweets.find((tweet)=> tweet.id ===id)
-    res.status(200).json(tweets)
+    res.status(204).json(tweets)
 })
 
 export default router
