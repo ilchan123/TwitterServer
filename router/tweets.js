@@ -35,14 +35,14 @@ router.post('/', validateTweet, isAuth, tweetController.postTweets)
 // PUT
 // http://127.0.0.1:8080/tweets/:id
 // json 형태로 입력 후 추가된 데이터까지 모두 json으로 출력
-router.put('/:id', validateTweet, isAuth, tweetController.putIdTweets)
+router.put('/:id', validateTweet, isAuth, tweetController.updateTweets)
 
 
 
 // 트윗 삭제하기
 // DELETE
 // http://127.0.0.1:8080/tweets/:id
-router.delete('/:id', isAuth, tweetController.deleteIdTweets)
+router.delete('/:id', isAuth, tweetController.deleteTweets)
 
 
 export default router

@@ -1,27 +1,21 @@
 let tweets = [
     {
         id:'1',
-        name:'김사과',
-        username:'apple',
+        userId: '1',
         text:'오지엉덮밥!',
-        createdAt: Date.now().toString(),
-        url:'https://r2.jjalbot.com/2023/03/Vmpor2ad_O.jpeg'
+        createdAt: Date.now().toString()
     },
     {
         id:'2',
-        name:'반하나',
-        username:'banana',
+        userId: '2',
         text:'문방구 안녕하시요',
-        createdAt: Date.now().toString(),
-        url:'https://i.namu.wiki/i/hz7d5fA5FHkfWUU5JBg6DHEkDQ6p_BLMdO1uMMnz-fVm6ENhORHqo2OvECOoeBFK8Gjwe9CgGJw0EduN6hRg-Q.webp'
+        createdAt: Date.now().toString()
     },
     {
         id:'3',
-        name:'오렝지',
-        username:'orange',
+        userId: '1',
         text:'시대의 주먹!',
-        createdAt: Date.now().toString(),
-        url:'https://aws-cdn.peanutoon.com/POCSTORAGE3/compression/jpeg/comic/4049/60644/EPI_COVER_IMG_060644_20191103_080656_143.jpeg'
+        createdAt: Date.now().toString()
     }
 ]
 
