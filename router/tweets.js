@@ -11,7 +11,6 @@ const validateTweet = [
 ]
 
 
-
 // 해당 아이디에 대한 트윗 가져오기
 // GET
 // http://127.0.0.1:8080/tweets?username=:username
