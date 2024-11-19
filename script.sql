@@ -22,6 +22,7 @@ create table tweets (
     foreign key(userId) references users(Id)
 );
 
+alter table tweets add column updatedAt datetime;
 select * from tweets;
 
 SELECT u.id, u.username, u.name, u.url, userId, text, createdAt FROM users as u 
