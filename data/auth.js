@@ -1,26 +1,27 @@
-// import SQ from 'sequelize'
-import MongoDb, { ObjectId } from 'mongodb'
-import { getUsers } from '../db/database.js' 
+import Mongoose from 'mongoose'
+import { useVirtualId } from '../db/database.js' 
 
+const userSchema = new Mongoose.Schema({
+    username: { type: String, require: true },
+    name: {type: String, require: true},
+    email: { type: String, require: true },
+    password: { type: String, require: true },
+    url: String
+}, { versionKey: false})
 
-const ObjectID = MongoDb.ObjectId
+useVirtualId(userSchema)
+const User = Mongoose.model('User', userSchema)
 
 export async function findByUsername(username) {
-    return getUsers().find({username}).next().then(mapOptionalUser)    
+    return User.findOne({username})
 }
 
 export async function findById(id) {
-    return getUsers().find({ _id: new ObjectId(id)})
-    .next()
-    .then(mapOptionalUser)    
+    return User.findById(id)    
 }
 
-export async function  createUser(user) {
-    return getUsers().insertOne(user).then((result)=> result.insertedId.toString())    
-}
-
-function mapOptionalUser(user){
-    return user ? { ...user, id: user._id.toString() } : user
+export async function createUser(user) {
+    return User(user).save().then((data)=>data.id)
 }
 
 

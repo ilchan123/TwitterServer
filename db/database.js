@@ -1,13 +1,21 @@
 import { config } from '../config.js'
-import MongoDb from 'mongodb'
+import Mongoose from 'mongoose'
 
 let db
 
+
 export async function connectDB(){
-    return MongoDb.MongoClient.connect(config.db.host).then((client)=>{
-        db = client.db()
-    })
+    return Mongoose.connect(config.db.host)
 }
+
+export function useVirtualId(schema){
+    schema.virtual('id').get(function(){
+        return this._id.toString()
+    })
+    schema.set('toJSON', {virtual:true})
+    schema.set('toObject', {virtual:true})
+}
+
 
 export function getUsers(){
     return db.collection('users')
@@ -18,28 +26,3 @@ export function getTweets(){
 }
 
 
-
-// 11.18.15시
-// import SQ from 'sequelize'
-
-// const { host, user, database, password } = config.db
-// export const sequelize = new SQ.Sequelize(database, user, password, {
-//     host, 
-//     dialect: 'mysql',
-//     logging: false 
-// })
-
-
-
-
-// mysql을 연결하던 거- 이젠 필요없어짐
-// const pool = mysql.createPool({
-//     host: config.db.host,
-//     user: config.db.user,
-//     database: config.db.database,
-//     password: config.db.password
-// })
-
-// 문제 : 여기서 promise 가 뭘까?
-// 답변 : (여기에 적어주세요)
-// export const db = pool.promise()
